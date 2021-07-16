@@ -34,3 +34,8 @@ jobs:
           checkstring: "ok"
           delay: 5
           rollbackonhealthcheckfailed: true
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.15.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ always() }}
